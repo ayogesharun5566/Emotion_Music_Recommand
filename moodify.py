@@ -120,7 +120,6 @@ def main():
 
         st.subheader("**🎵 Project Overview — Emotion Music Recommender (Moodify)**")
         st.markdown("This project detects a person’s emotion from an image (usually a facial photo) and then recommends songs that match the detected mood.")
-        st.markdown("It combines computer vision and music recommendation using machine learning — essentially a “mood-based music player.”)
         st.markdown("An AI-powered music recommendation app that detects your facial emotion using deep learning and suggests matching songs from Spotify in real time.
 Built with Streamlit, OpenCV, TensorFlow/Keras, and the Spotify Web API.")
 
@@ -132,4 +131,5 @@ Built with Streamlit, OpenCV, TensorFlow/Keras, and the Spotify Web API.")
 # ===============================
 if __name__ == "__main__":
     main()
+
 
