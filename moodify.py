@@ -116,6 +116,17 @@ def main():
                 text-align: center;
                 color: white;
             }
+            /* GitHub button */
+            .github-link {
+                background-color: #24292F;
+                color: white;
+                padding: 8px 16px;
+                border-radius: 8px;
+                text-decoration: none;
+            }
+            .github-link:hover {
+                background-color: #0366d6;
+            }
         </style>
     """, unsafe_allow_html=True)
 
@@ -124,6 +135,13 @@ def main():
     st.markdown("<h4 class='center-text'>An AI-powered app that detects your mood and recommends songs 🎧</h4>", unsafe_allow_html=True)
     st.markdown("<p class='center-text'>Developed by <b>Yogesh A</b></p>", unsafe_allow_html=True)
     st.write("---")
+
+    # 📖 SIDEBAR INFO
+    with st.sidebar:
+        st.header("📘 About Moodify")
+        st.write("This app uses facial emotion recognition to recommend matching songs from Spotify.")
+        st.markdown("**Technologies:** Streamlit · OpenCV · TensorFlow · Spotify API")
+        st.markdown("[🌐 View Source Code on GitHub](https://github.com/yourusername/Emotion_Music_Recommand)", unsafe_allow_html=True)
 
     # 📸 CAMERA INPUT
     img_file = st.camera_input("📸 Take a photo of yourself")
@@ -161,14 +179,20 @@ def main():
                     unsafe_allow_html=True
                 )
 
-        # 📖 PROJECT INFO
+        # 📖 PROJECT INFO + FOOTER
         st.write("---")
         st.subheader("🎵 About This Project")
         st.markdown("""
         **Moodify** uses deep learning to detect your facial emotion and recommends matching Spotify tracks in real time.  
         Built with **Streamlit**, **OpenCV**, **TensorFlow/Keras**, and the **Spotify Web API**.
         """)
-
+        st.markdown("""
+        <p class='center-text'>
+            🌐 <a href="https://github.com/yourusername/Emotion_Music_Recommand" target="_blank" class="github-link">
+            View Source Code on GitHub
+            </a>
+        </p>
+        """, unsafe_allow_html=True)
         st.markdown("<p class='center-text'>© 2025 Moodify | Powered by Streamlit & Spotify API</p>", unsafe_allow_html=True)
 
         # Clean up temp file
