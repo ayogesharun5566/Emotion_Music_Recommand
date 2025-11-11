@@ -1,0 +1,10 @@
+streamlit
+numpy
+tensorflow==2.12.0
+keras==2.12.0
+opencv-python-headless==4.9.0.80
+spotipy==2.23.0
+Pillow
+
+
+
