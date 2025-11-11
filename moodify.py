@@ -90,11 +90,43 @@ def detect_emotion_from_image(image):
 # 🖥️ Streamlit User Interface
 # ===============================
 def main():
-    st.title("🎵 Emotion-Based Music Recommender (Moodify)")
-    st.subheader("Developed by Yogesh A")
-    st.markdown("**Capture your photo** and get music recommendations that match your mood!")
+    # 🎨 PAGE STYLING (CSS)
+    st.markdown("""
+        <style>
+            /* Background gradient */
+            [data-testid="stAppViewContainer"] {
+                background: linear-gradient(135deg, #74ABE2 0%, #5563DE 100%);
+                color: white;
+            }
+            /* Sidebar styling */
+            [data-testid="stSidebar"] {
+                background-color: rgba(255, 255, 255, 0.15);
+                color: white;
+            }
+            /* Card-like box for results */
+            .song-card {
+                background-color: rgba(255, 255, 255, 0.1);
+                padding: 15px;
+                border-radius: 12px;
+                margin-bottom: 12px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+            /* Centered text style */
+            .center-text {
+                text-align: center;
+                color: white;
+            }
+        </style>
+    """, unsafe_allow_html=True)
 
-    img_file = st.camera_input("📸 Take a photo")
+    # 🎵 HEADER
+    st.markdown("<h1 class='center-text'>🎵 Emotion-Based Music Recommender (Moodify)</h1>", unsafe_allow_html=True)
+    st.markdown("<h4 class='center-text'>An AI-powered app that detects your mood and recommends songs 🎧</h4>", unsafe_allow_html=True)
+    st.markdown("<p class='center-text'>Developed by <b>Yogesh A</b></p>", unsafe_allow_html=True)
+    st.write("---")
+
+    # 📸 CAMERA INPUT
+    img_file = st.camera_input("📸 Take a photo of yourself")
 
     if img_file is not None:
         # Save uploaded image temporarily
@@ -102,26 +134,42 @@ def main():
         tfile.write(img_file.getvalue())
         frame = cv2.imread(tfile.name)
 
-        with st.spinner("Analyzing emotion..."):
+        with st.spinner("🎭 Detecting your emotion... Please wait..."):
             emotion = detect_emotion_from_image(frame)
 
         genre = get_genre(emotion)
         tracks = get_tracks_by_genre(genre)
 
-        st.subheader(f"😊 Detected Emotion: **{emotion}**")
-        st.subheader(f"🎶 Recommended Genre: **{genre}**")
+        # 😊 RESULTS
+        st.markdown(f"<h3 class='center-text'>😊 Detected Emotion: <b>{emotion}</b></h3>", unsafe_allow_html=True)
+        st.markdown(f"<h3 class='center-text'>🎶 Recommended Genre: <b>{genre}</b></h3>", unsafe_allow_html=True)
+        st.write("")
 
         if not tracks:
             st.warning("No songs found — please check Spotify credentials.")
         else:
+            st.markdown("<h4>🎧 Top Spotify Recommendations:</h4>", unsafe_allow_html=True)
             for idx, track in enumerate(tracks):
-                st.markdown(f"**{idx + 1}. {track['name']}** by *{track['artist']}*")
-                st.markdown(f"[▶️ Listen on Spotify]({track['url']})")
+                st.markdown(
+                    f"""
+                    <div class="song-card">
+                        <b>{idx + 1}. {track['name']}</b><br>
+                        👤 {track['artist']}<br>
+                        <a href="{track['url']}" target="_blank" style="color:#FFD700;">▶️ Listen on Spotify</a>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
 
-        st.subheader("**🎵 Project Overview — Emotion Music Recommender (Moodify)**")
-        st.markdown("This project detects a person’s emotion from an image (usually a facial photo) and then recommends songs that match the detected mood.")
-        st.markdown("An AI-powered music recommendation app that detects your facial emotion using deep learning and suggests matching songs from Spotify in real time.
-Built with Streamlit, OpenCV, TensorFlow/Keras, and the Spotify Web API.")
+        # 📖 PROJECT INFO
+        st.write("---")
+        st.subheader("🎵 About This Project")
+        st.markdown("""
+        **Moodify** uses deep learning to detect your facial emotion and recommends matching Spotify tracks in real time.  
+        Built with **Streamlit**, **OpenCV**, **TensorFlow/Keras**, and the **Spotify Web API**.
+        """)
+
+        st.markdown("<p class='center-text'>© 2025 Moodify | Powered by Streamlit & Spotify API</p>", unsafe_allow_html=True)
 
         # Clean up temp file
         os.remove(tfile.name)
@@ -131,5 +179,3 @@ Built with Streamlit, OpenCV, TensorFlow/Keras, and the Spotify Web API.")
 # ===============================
 if __name__ == "__main__":
     main()
-
-
