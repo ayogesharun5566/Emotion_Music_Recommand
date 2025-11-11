@@ -91,6 +91,7 @@ def detect_emotion_from_image(image):
 # ===============================
 def main():
     st.title("🎵 Emotion-Based Music Recommender (Moodify)")
+    st.subheader("Developed by Yogesh A")
     st.markdown("**Capture your photo** and get music recommendations that match your mood!")
 
     img_file = st.camera_input("📸 Take a photo")
@@ -117,6 +118,12 @@ def main():
                 st.markdown(f"**{idx + 1}. {track['name']}** by *{track['artist']}*")
                 st.markdown(f"[▶️ Listen on Spotify]({track['url']})")
 
+        st.subheader("**🎵 Project Overview — Emotion Music Recommender (Moodify)**")
+        st.markdown("This project detects a person’s emotion from an image (usually a facial photo) and then recommends songs that match the detected mood.")
+        st.markdown("It combines computer vision and music recommendation using machine learning — essentially a “mood-based music player.”)
+        st.markdown("An AI-powered music recommendation app that detects your facial emotion using deep learning and suggests matching songs from Spotify in real time.
+Built with Streamlit, OpenCV, TensorFlow/Keras, and the Spotify Web API.")
+
         # Clean up temp file
         os.remove(tfile.name)
 
@@ -125,3 +132,4 @@ def main():
 # ===============================
 if __name__ == "__main__":
     main()
+
