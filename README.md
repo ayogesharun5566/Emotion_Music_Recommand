@@ -35,4 +35,4 @@ Built with **Streamlit**, **OpenCV**, **TensorFlow/Keras**, and the **Spotify We
 <img width="1920" height="1080" alt="Screenshot (56)" src="https://github.com/user-attachments/assets/2b2db26f-1360-41c4-80f8-bf62b3a4dbb7" />
 
 # Deploy Webpage link
-[Emotion Music Recommand](https://emotionmusicrecommand-k6sejwmevh6qtaefcryuts.streamlit.app/)
+[Emotion Music Recommand](https://emotionmusicrecommand-yogesha.streamlit.app/)
