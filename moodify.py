@@ -188,7 +188,7 @@ def main():
         """)
         st.markdown("""
         <p class='center-text'>
-            🌐 <a href="https://github.com/yourusername/Emotion_Music_Recommand" target="_blank" class="github-link">
+            🌐 <a href="https://github.com/ayogesharun5566/Emotion_Music_Recommand" target="_blank" class="github-link">
             View Source Code on GitHub
             </a>
         </p>
@@ -203,3 +203,4 @@ def main():
 # ===============================
 if __name__ == "__main__":
     main()
+
